@@ -30,6 +30,7 @@ class PostsAPIController extends AppBaseController
     /**
      * @param Request $request
      * @return Response
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      *
      * @SWG\Get(
      *      path="/posts",
@@ -63,14 +64,20 @@ class PostsAPIController extends AppBaseController
     {
         $this->postsRepository->pushCriteria(new RequestCriteria($request));
         $this->postsRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $posts = $this->postsRepository->all();
+        $data['posts'] = $this->postsRepository
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
 
-        return $this->sendResponse($posts->toArray(), 'Post retrieved successfully');
+        return $this->sendResponse(
+            $data->toArray(),
+            'Post retrieved successfully'
+        );
     }
 
     /**
      * @param CreatePostsAPIRequest $request
      * @return Response
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      *
      * @SWG\Post(
      *      path="/posts",
@@ -108,11 +115,12 @@ class PostsAPIController extends AppBaseController
      */
     public function store(CreatePostsAPIRequest $request)
     {
-        $input = $request->all();
+        $input = $request->validated();
+        $input['user_id'] = $request->user()->id;
 
-        $posts = $this->postsRepository->create($input);
+        $data = $this->postsRepository->create($input);
 
-        return $this->sendResponse($posts->toArray(), 'Post saved successfully');
+        return $this->sendResponse($data->toArray(), 'Post saved successfully');
     }
 
     /**
@@ -155,20 +163,24 @@ class PostsAPIController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var Post $posts */
-        $posts = $this->postsRepository->findWithoutFail($id);
+        /** @var Post $data */
+        $data = $this->postsRepository->findWithoutFail($id);
 
-        if (empty($posts)) {
+        if ($data === null) {
             return $this->sendError('Post not found');
         }
 
-        return $this->sendResponse($posts->toArray(), 'Post retrieved successfully');
+        return $this->sendResponse(
+            $data->toArray(),
+            'Post retrieved successfully'
+        );
     }
 
     /**
-     * @param int $id
+     * @param int                   $id
      * @param UpdatePostsAPIRequest $request
      * @return Response
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      *
      * @SWG\Put(
      *      path="/posts/{id}",
@@ -213,23 +225,28 @@ class PostsAPIController extends AppBaseController
      */
     public function update($id, UpdatePostsAPIRequest $request)
     {
-        $input = $request->all();
+        $input = $request->validated();
+        $input['user_id'] = $request->user()->id;
 
-        /** @var Post $posts */
-        $posts = $this->postsRepository->findWithoutFail($id);
+        /** @var Post $data */
+        $data = $this->postsRepository->findWithoutFail($id);
 
-        if (empty($posts)) {
+        if ($data === null) {
             return $this->sendError('Post not found');
         }
 
-        $posts = $this->postsRepository->update($input, $id);
+        $data = $this->postsRepository->update($input, $id);
 
-        return $this->sendResponse($posts->toArray(), 'Post updated successfully');
+        return $this->sendResponse(
+            $data->toArray(),
+            'Post updated successfully'
+        );
     }
 
     /**
      * @param int $id
      * @return Response
+     * @throws \Exception
      *
      * @SWG\Delete(
      *      path="/posts/{id}",
@@ -267,14 +284,14 @@ class PostsAPIController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var Post $posts */
-        $posts = $this->postsRepository->findWithoutFail($id);
+        /** @var Post $data */
+        $data = $this->postsRepository->findWithoutFail($id);
 
-        if (empty($posts)) {
+        if ($data === null) {
             return $this->sendError('Post not found');
         }
 
-        $posts->delete();
+        $data->delete();
 
         return $this->sendResponse($id, 'Post deleted successfully');
     }
