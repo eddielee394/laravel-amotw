@@ -2,7 +2,7 @@
 Basic message board system.  
 
 ### Required Functionality Overview:
-* [ ]	Display list of existing messages (message content and entered name and email)
+* [x]	Display list of existing messages (message content and entered name and email)
 * [ ]	List of messages sorted most recent first
 * [ ]	Messages should be paginated, 10 per page
 * [ ]	Form to post message has fields for name, email, and message
