@@ -11,6 +11,11 @@
 |
 */
 
-Auth::routes();
+//Auth Routes
+Auth::routes(['verify' => true]);
 
-Route::get('/dashboard', 'DashboardController@index');
+//Resource Routes
+Route::resource('posts', 'PostsController');
+
+//View Routes
+Route::get('/dashboard', 'DashboardController@index')->middleware('verified');
