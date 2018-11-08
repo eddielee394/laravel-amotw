@@ -11,11 +11,19 @@
 |
 */
 
-//Auth Routes
-Auth::routes(['verify' => true]);
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/', 'HomeController@index')->name('home.index');
 
-//Resource Routes
-Route::resource('posts', 'PostsController');
+    //Auth Routes
+    Auth::routes(['verify' => true]);
+});
 
 //View Routes
-Route::get('/dashboard', 'DashboardController@index')->middleware('verified');
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    //Resource Routes
+    Route::resource('posts', 'PostsController');
+
+    Route::get('/dashboard', 'DashboardController@index')->name(
+        'dashboard.index'
+    );
+});

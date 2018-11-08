@@ -13,9 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//View Routes
+Route::group(['middleware' => ['auth', 'auth:api', 'verified']], function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    //Resource Routes
+    Route::resource('posts', 'PostsAPIController');
 });
-
-
-Route::resource('posts', 'PostsAPIController');
