@@ -21,13 +21,6 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/dashboard';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -35,5 +28,17 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @description override trait method instead of using $redirectTo property in order to use route name instead of relative path
+     *
+     * @return string
+     */
+    protected function redirectTo()
+    {
+        return route('dashboard.index');
     }
 }

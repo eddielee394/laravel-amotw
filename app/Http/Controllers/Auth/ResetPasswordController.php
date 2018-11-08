@@ -21,13 +21,6 @@ class ResetPasswordController extends Controller
     use ResetsPasswords;
 
     /**
-     * Where to redirect users after resetting their password.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -35,5 +28,17 @@ class ResetPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    /**
+     * Where to redirect users after resetting their password.
+     *
+     * @description override trait method instead of using $redirectTo property in order to use route name instead of relative path
+     *
+     * @return string
+     */
+    protected function redirectTo()
+    {
+        return route('login');
     }
 }

@@ -21,13 +21,6 @@ class VerificationController extends Controller
     use VerifiesEmails;
 
     /**
-     * Where to redirect users after verification.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/dashboard';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -37,5 +30,17 @@ class VerificationController extends Controller
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+
+    /**
+     * Where to redirect users after verification.
+     *
+     * @description override trait method instead of using $redirectTo property in order to use route name instead of relative path
+     *
+     * @return string
+     */
+    protected function redirectTo()
+    {
+        return route('dashboard.index');
     }
 }
