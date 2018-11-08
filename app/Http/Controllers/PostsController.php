@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Requests\CreatePostsRequest;
 use App\Http\Requests\UpdatePostsRequest;
 use App\Repositories\PostsRepository;
 use Flash;
 use Response;
+use Prettus\Repository\Criteria\RequestCriteria;
 
 class PostsController extends AppBaseController
 {
@@ -22,12 +23,18 @@ class PostsController extends AppBaseController
     /**
      * Display a listing of the Post.
      *
-     * @param PostsDataTable $postsDataTable
+     * @param \Illuminate\Http\Request $request
+     *
      * @return Response
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['posts'] = $this->postsRepository->all();
+        $this->postsRepository->pushCriteria(new RequestCriteria($request));
+        $data['posts'] = $this->postsRepository
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
         return view('posts.index', $data);
     }
 
