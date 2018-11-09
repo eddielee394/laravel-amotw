@@ -22,6 +22,8 @@ class Post extends Model
         'body' => 'string'
     ];
 
+    protected $appends = ['created_at_relative'];
+
     /**
      * User Relationship
      * @uses \App\Models\User
@@ -30,5 +32,15 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Gets created_at timestamp relative to now
+     * @uses \Carbon\Carbon
+     * @return mixed
+     */
+    public function getCreatedAtRelativeAttribute()
+    {
+        return $this->created_at->diffForHumans();
     }
 }
