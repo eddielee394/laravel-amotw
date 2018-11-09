@@ -13,11 +13,11 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
 /**
- * Class PostsController
+ * Class PostController
  * @package App\Http\Controllers\API
  */
 
-class PostsAPIController extends AppBaseController
+class PostAPIController extends AppBaseController
 {
     /** @var  PostsRepository */
     private $postsRepository;

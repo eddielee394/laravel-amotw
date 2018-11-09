@@ -20,5 +20,5 @@ Route::group(['middleware' => ['auth', 'auth:api', 'verified']], function () {
     });
 
     //Resource Routes
-    Route::resource('posts', 'PostsAPIController');
+    Route::resource('posts', 'PostAPIController');
 });

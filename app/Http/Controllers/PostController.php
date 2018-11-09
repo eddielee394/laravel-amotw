@@ -10,7 +10,7 @@ use Flash;
 use Response;
 use Prettus\Repository\Criteria\RequestCriteria;
 
-class PostsController extends AppBaseController
+class PostController extends AppBaseController
 {
     /** @var  PostsRepository */
     private $postsRepository;

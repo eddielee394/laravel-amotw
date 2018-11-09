@@ -31,4 +31,14 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Gets created_at timestamp relative to now
+     * @uses \Carbon\Carbon
+     * @return mixed
+     */
+    public function getCreatedAtRelativeAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
 }
