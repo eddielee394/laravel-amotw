@@ -1,5 +1,5 @@
 # Another Message on the Wall
-![](docs/screenshots/amitw_bg.jpg)   
+![](docs/screenshots/amotw_login.jpg)   
 
 A simple messaging system that allows users to... You guessed it, post messages to a wall.
 
