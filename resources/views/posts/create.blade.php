@@ -1,23 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <h1>
-            Posts
-        </h1>
-    </section>
-    <div class="content">
-        @include('adminlte-templates::common.errors')
-        <div class="box box-primary">
-
-            <div class="box-body">
-                <div class="row">
-                    {!! Form::open(['route' => 'posts.store']) !!}
-
-                        @include('posts.fields')
-
-                    {!! Form::close() !!}
-                </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                {!! Form::open(['route' => 'posts.store']) !!}
+                @include('posts.fields')
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
