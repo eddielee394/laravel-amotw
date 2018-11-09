@@ -26,4 +26,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', 'DashboardController@index')->name(
         'dashboard.index'
     );
+
+    Route::view('/dashboard/{path?}', 'dashboard');
 });

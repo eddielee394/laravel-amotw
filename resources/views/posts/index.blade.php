@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
 	<section class="content-header">
-		<h1 class="pull-left">Posts</h1>
-		<h1 class="pull-right">
-			<a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('posts.create') !!}">Add New</a>
+		<h1 class="">Posts</h1>
+		<h1 class="di">
+			<a class="btn btn-primary" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('posts.create') !!}">Add New</a>
 		</h1>
 	</section>
 	<div class="content">
@@ -18,9 +18,10 @@
 @foreach ($posts as $post)
 	<ul class="list-group">
 		<li class="list-group-item">Post body: {{ $post->body }}</li>
-		<li class="list-group-item">User: {{ $post->user->name }}</li>
+		<li class="list-group-item">User: {{ $post->user->username }}</li>
 		<li class="list-group-item">User Id: {{ $post->user->id }}</li>
 		<li class="list-group-item">Post Id: {{ $post->id }}</li>
+		<li class="list-group-item">{{ $post->created_at_relative }}</li>
 	</ul>
 @endforeach
 			</div>
