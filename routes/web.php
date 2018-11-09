@@ -13,15 +13,15 @@
 
 use App\Http\Controllers\PostController;
 
-Route::group([ 'middleware' => ['web']], function () {
+Route::group(['middleware' => ['web']], function () {
     //Auth Routes
     Auth::routes(['verify' => true]);
 
-    Route::get( '/', 'PostController@index')->name('posts.index');
+    Route::get('/', 'PostController@index')->name('dashboard.index');
 });
 
 //View Routes
 Route::group(['middleware' => ['auth', 'verified']], function () {
     //Resource Routes
-    Route::resource('posts', 'PostController')->except(['index']);
+    Route::resource('posts', 'PostController');
 });

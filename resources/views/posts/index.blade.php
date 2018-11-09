@@ -2,6 +2,7 @@
 
 @section('content')
 	<div class="container">
+		@include('flash::message')
 		<div class="row justify-content-center text-center mb-5">
 			<div class="col-md-8 justify-content-center">
 				@guest
@@ -21,13 +22,17 @@
 					<div class="card mb-3">
 						<div class="card-header">Home</div>
 						<div class="card-body">
-							<div class="card-title">User: {{ $post->user->username }}</div>
-							<div class="card-text">{{ $post->body }}</div>
-							
-							<div class="card-footer">
+							<h5 class="card-title">{{ $post->user->username }}</h5>
+							<p class="card-text">{{ $post->body }}</p>
+							<div class="card-footer d-flex justify-content-between">
 								<div class="small text-muted">
 									{{ $post->created_at_relative }}
 								</div>
+								@auth
+									@if($post->user->id === Auth::user()->id)
+										@include('posts.actions', ['type' => 'destroy', 'id'=>$post->id])
+									@endif
+								@endauth
 							</div>
 						</div>
 					</div>

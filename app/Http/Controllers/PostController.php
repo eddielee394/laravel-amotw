@@ -69,26 +69,6 @@ class PostController extends AppBaseController
     }
 
     /**
-     * Display the specified Post.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
-    public function show($id)
-    {
-        $data['posts'] = $this->postsRepository->findWithoutFail($id);
-
-        if ($data['posts'] === null) {
-            Flash::error('Post not found');
-
-            return redirect(route('posts.index'));
-        }
-
-        return view('posts.show', $data);
-    }
-
-    /**
      * Show the form for editing the specified Post.
      *
      * @param  int $id
