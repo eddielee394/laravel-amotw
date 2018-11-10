@@ -64,13 +64,15 @@ class PostsAPIController extends AppBaseController
     {
         $this->postsRepository->pushCriteria(new RequestCriteria($request));
         $this->postsRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $posts = $this->postsRepository->orderBy('created_at', 'desc')->all();
-        //        $data['posts'] = $this->postsRepository->all();
-        //            ->orderBy('created_at', 'desc')
-        //            ->paginate(10);
+        $posts = $this->postsRepository
+            ->with('user')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
 
-        return $posts->toJson();
-        //        return $this->sendResponse($data, 'Post retrieved successfully');
+        return $this->sendResponse(
+            $posts->toArray(),
+            'Post retrieved successfully'
+        );
     }
 
     /**

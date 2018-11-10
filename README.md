@@ -25,7 +25,8 @@ A simple messaging system that allows users to... You guessed it, post messages 
 * [ ] Nested post replies
 * [ ] Favorited posts
 * [ ] Better SCSS support
-* [ ] REST API integration  
+* [ ] REST API integration
+* [ ] Add infinite scroll to post pagination  
 
 ## Codebase Overview
 - Laravel 5.7.x
