@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import Post from "./Post";
 import LoadMoreButton from "./components/LoadMoreButton";
-import AddNewButton from "./components/AddNewButton";
+import SidePanel from "../common/SidePanel";
+import PostCreate from "./PostCreate";
 
 class PostsList extends Component {
     state = {
@@ -84,21 +85,25 @@ class PostsList extends Component {
     render() {
         const { posts, loading, nextPage } = this.state;
         return (
-            <div className="posts-container pb-5">
-                <div className="timeline timeline--vertical-squares">
-                    <div className="timeline__wrapper">
-                        <Post posts={posts} />
-                    </div>
-                    <div className="timeline__progress-bar">
-                        <LoadMoreButton
-                            handleLoadMore={this.handleLoadMore}
-                            loading={loading}
-                            nextPage={nextPage}
-                        />
+            <React.Fragment>
+                <div className="posts-container pb-5">
+                    <div className="timeline timeline--vertical-squares">
+                        <div className="timeline__wrapper">
+                            <Post posts={posts} />
+                        </div>
+                        <div className="timeline__progress-bar">
+                            <LoadMoreButton
+                                handleLoadMore={this.handleLoadMore}
+                                loading={loading}
+                                nextPage={nextPage}
+                            />
+                        </div>
                     </div>
                 </div>
-                <AddNewButton handleAddNew={this.handleAddNew} />
-            </div>
+                <SidePanel title="Create Post">
+                    <PostCreate handleAddNew={this.handleAddNew} />
+                </SidePanel>
+            </React.Fragment>
         );
     }
 }

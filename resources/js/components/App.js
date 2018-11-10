@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import PostsList from "./posts/PostsList";
 import ScrollTop from "./common/ScrollToTop/ScrollToTop";
+import SidePanel from "./common/SidePanel";
 
 export default class App extends Component {
     render() {
@@ -13,6 +14,7 @@ export default class App extends Component {
                         <PostsList />
                     </div>
                 </div>
+
                 <div className="row justify-content-center fixed-bottom">
                     <div className="col-md-12 text-center">
                         <ScrollTop />
