@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Post from "./Post";
-import LoadMoreButton from "./actions/LoadMoreButton";
+import LoadMoreButton from "./components/LoadMoreButton";
+import AddNewButton from "./components/AddNewButton";
 
 class PostsList extends Component {
     state = {
@@ -70,15 +71,20 @@ class PostsList extends Component {
      * Load More event handler
      * @param event
      */
-    handleLoadMore = event => {
-        event.preventDefault();
+    handleLoadMore = e => {
+        e.preventDefault();
         this.loadMore();
+    };
+
+    handleAddNew = e => {
+        e.preventDefault();
+        console.log("add new button clicked");
     };
 
     render() {
         const { posts, loading, nextPage } = this.state;
         return (
-            <div className="posts-container">
+            <div className="posts-container pb-5">
                 <div className="timeline timeline--vertical-squares">
                     <div className="timeline__wrapper">
                         <Post posts={posts} />
@@ -91,6 +97,7 @@ class PostsList extends Component {
                         />
                     </div>
                 </div>
+                <AddNewButton handleAddNew={this.handleAddNew} />
             </div>
         );
     }
