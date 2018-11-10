@@ -10,16 +10,17 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@babel/preset-env": "^7.1.5",
+        "@babel/preset-es2015": "^7.0.0-beta.53",
+        "axios": "^0.18",
         "babel-cli": "^6.26.0",
         "babel-eslint": "^8.2.6",
         "babel-polyfill": "^6.26.0",
         "babel-preset-env": "^1.7.0",
-        "babel-preset-stage-0": "^6.24.1",
-        "@babel/preset-env": "^7.1.5",
-        "@babel/preset-es2015": "^7.0.0-beta.53",
-        "axios": "^0.18",
         "babel-preset-react": "^6.23.0",
+        "babel-preset-stage-0": "^6.24.1",
         "bootstrap": "^4.1.3",
+        "browser-sync-webpack-plugin": "^2.0.1",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^2.0",
@@ -29,8 +30,11 @@
         "react-dom": "^16.2.0"
     },
     "dependencies": {
+        "browser-sync": "^2.26.3",
         "laravel-echo": "^1.4.1",
+        "prop-types": "^15.6.2",
         "react-router": "^4.3.1",
-        "react-router-dom": "^4.3.1"
+        "react-router-dom": "^4.3.1",
+        "react-spinners": "^0.4.7"
     }
 }
