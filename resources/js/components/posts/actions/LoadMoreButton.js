@@ -4,8 +4,9 @@ import { ScaleLoader } from "react-spinners";
 
 const LoadMoreButton = props => {
     const { loading, nextPage, handleLoadMore } = props;
-    const allPostsLoaded = nextPage === !null;
+    const allPostsLoaded = nextPage === null;
     const isDisabled = loading || nextPage === null;
+    const isLoading = loading ? "LOADING" : "LOAD MORE";
 
     let loadMoreButton = null;
     if (!allPostsLoaded) {
@@ -16,8 +17,7 @@ const LoadMoreButton = props => {
                 disabled={isDisabled}
             >
                 <ScaleLoader color={"#00c6ff"} loading={loading} />
-                <i className="far fa-sync" />{" "}
-                {loading ? "LOADING" : "LOAD MORE"}
+                <i className="far fa-sync" /> {isLoading}
             </button>
         );
     }
@@ -27,7 +27,7 @@ const LoadMoreButton = props => {
 
 LoadMoreButton.propTypes = {
     loading: PropTypes.bool.isRequired,
-    nextPage: PropTypes.string.isRequired
+    handleLoadMore: PropTypes.func.isRequired
 };
 
 export default LoadMoreButton;

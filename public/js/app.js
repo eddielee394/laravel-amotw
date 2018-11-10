@@ -69878,8 +69878,9 @@ var LoadMoreButton = function LoadMoreButton(props) {
         nextPage = props.nextPage,
         handleLoadMore = props.handleLoadMore;
 
-    var allPostsLoaded = nextPage === !null;
+    var allPostsLoaded = nextPage === null;
     var isDisabled = loading || nextPage === null;
+    var isLoading = loading ? "LOADING" : "LOAD MORE";
 
     var loadMoreButton = null;
     if (!allPostsLoaded) {
@@ -69893,7 +69894,7 @@ var LoadMoreButton = function LoadMoreButton(props) {
             _react2.default.createElement(_reactSpinners.ScaleLoader, { color: "#00c6ff", loading: loading }),
             _react2.default.createElement("i", { className: "far fa-sync" }),
             " ",
-            loading ? "LOADING" : "LOAD MORE"
+            isLoading
         );
     }
 
@@ -69902,7 +69903,7 @@ var LoadMoreButton = function LoadMoreButton(props) {
 
 LoadMoreButton.propTypes = {
     loading: _propTypes2.default.bool.isRequired,
-    nextPage: _propTypes2.default.string.isRequired
+    handleLoadMore: _propTypes2.default.func.isRequired
 };
 
 exports.default = LoadMoreButton;
