@@ -7,12 +7,12 @@ A simple messaging system that allows users to... You guessed it, post messages 
 #### Message Board
 ![](docs/screenshots/messageboard_posts_v2.jpg)
 
-### Required Functionality Overview:
+### Core Functionality Overview:
 * [x]	Display list of existing messages (message content and entered name and email)
 * [x]	List of messages sorted most recent first
 * [x]	Messages should be paginated, 10 per page
-* [ ]	~~Form to post message has fields for name, email, and message~~
-* [x]	Form validates name, email, and message as required fields, email is a valid email
+* [ ]	Form to post message has fields for ~~name, email, and~~ message
+* [x]	Registration Form validates name, email, and message as required fields, email is a valid email
 * [x]	Messages are stored in a database
 * [x]	No restrictions on use of back-end or front-end frameworks, as long as back-end is in PHP
 * [x]	Code pushed to Github, bitbucket, or other online code repository
@@ -23,13 +23,14 @@ A simple messaging system that allows users to... You guessed it, post messages 
 * [x] User email verification on registration
 * [x] Username & email unique validation on registration
 * [ ] Integrate ReactJS
-* [ ] User avatar support
+* [x] User avatar support
 * [ ] Fancy looking design & styles
 * [ ] Nested post replies
 * [ ] Favorited posts
 * [ ] Better SCSS support
 * [ ] REST API integration
-* [x] Add infinite scroll to post pagination  
+* [x] Add infinite scroll to post pagination
+* [ ] Taggable support 
 
 ## Codebase Overview
 - Laravel 5.7.x

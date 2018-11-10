@@ -10,18 +10,21 @@ class PostsList extends Component {
         loading: false
     };
 
+    /**
+     * Fires when the component is mounted
+     */
     componentDidMount() {
-        this.getAllPosts();
+        this.getPosts();
     }
 
-    getAllPosts = () => {
-        const { loading, nextPage } = this.state;
-        //check state is loading to avoid multiple requests
-        if (!loading) {
-            this.setState({
-                loading: true
-            });
-        }
+    /**
+     * Gets the post from the api
+     */
+    getPosts = () => {
+        const { nextPage } = this.state;
+
+        //set state to loading to avoid multiple requests
+        this.setLoading();
 
         //make request
         axios.get(nextPage).then(response => {
@@ -40,13 +43,36 @@ class PostsList extends Component {
         });
     };
 
+    /**
+     * Load posts
+     */
+    loadMore = () => {
+        this.getPosts();
+    };
+
+    /**
+     * Sets the loading state
+     * @param isLoading
+     * @default true
+     * @return bool
+     */
+    setLoading = () => {
+        const { loading } = this.state;
+        //check state is loading to avoid multiple requests
+        if (!loading) {
+            this.setState({
+                loading: true
+            });
+        }
+    };
+
+    /**
+     * Load More event handler
+     * @param event
+     */
     handleLoadMore = event => {
         event.preventDefault();
         this.loadMore();
-    };
-
-    loadMore = () => {
-        this.getAllPosts();
     };
 
     render() {
