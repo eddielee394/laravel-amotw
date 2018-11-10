@@ -1,8 +1,11 @@
 # Another Message on the Wall
-![](docs/screenshots/amotw_login.jpg)   
-
 A simple messaging system that allows users to... You guessed it, post messages to a wall.
 
+#### Login
+![](docs/screenshots/amotw_login.jpg)
+
+#### Message Board
+![](docs/screenshots/messageboard_posts_v2.jpg)
 
 ### Required Functionality Overview:
 * [x]	Display list of existing messages (message content and entered name and email)
@@ -26,7 +29,7 @@ A simple messaging system that allows users to... You guessed it, post messages 
 * [ ] Favorited posts
 * [ ] Better SCSS support
 * [ ] REST API integration
-* [ ] Add infinite scroll to post pagination  
+* [x] Add infinite scroll to post pagination  
 
 ## Codebase Overview
 - Laravel 5.7.x
