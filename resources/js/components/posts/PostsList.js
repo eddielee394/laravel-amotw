@@ -8,7 +8,7 @@ import PostCreate from "./PostCreate";
 class PostsList extends Component {
     state = {
         posts: [],
-        nextPage: "/api/posts",
+        nextPage: "/posts",
         loading: false
     };
 
@@ -16,13 +16,25 @@ class PostsList extends Component {
      * Fires when the component is mounted
      */
     componentDidMount() {
-        this.getPosts();
+        this.getPaginatedPosts();
     }
+
+    getPosts = () => {
+        axios.get("/posts").then(response => {
+            const r = response.data,
+                posts = r.data.data;
+            if (posts.length) {
+                this.setState({
+                    posts: [...posts]
+                });
+            }
+        });
+    };
 
     /**
      * Gets the post from the api
      */
-    getPosts = () => {
+    getPaginatedPosts = () => {
         const { nextPage } = this.state;
 
         //set state to loading to avoid multiple requests
@@ -49,7 +61,7 @@ class PostsList extends Component {
      * Load posts
      */
     loadMore = () => {
-        this.getPosts();
+        this.getPaginatedPosts();
     };
 
     /**
@@ -77,11 +89,6 @@ class PostsList extends Component {
         this.loadMore();
     };
 
-    handleAddNew = e => {
-        e.preventDefault();
-        console.log("add new button clicked");
-    };
-
     render() {
         const { posts, loading, nextPage } = this.state;
         return (
@@ -101,7 +108,7 @@ class PostsList extends Component {
                     </div>
                 </div>
                 <SidePanel title="Create Post">
-                    <PostCreate handleAddNew={this.handleAddNew} />
+                    <PostCreate handleGetPosts={this.getPosts} />
                 </SidePanel>
             </React.Fragment>
         );

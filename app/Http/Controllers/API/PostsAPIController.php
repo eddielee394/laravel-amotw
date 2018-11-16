@@ -21,10 +21,12 @@ class PostsAPIController extends AppBaseController
 {
     /** @var  PostsRepository */
     private $postsRepository;
+    private $request;
 
-    public function __construct(PostsRepository $postsRepo)
+    public function __construct(PostsRepository $postsRepo, Request $request)
     {
         $this->postsRepository = $postsRepo;
+        $this->request = $request;
     }
 
     /**
@@ -67,7 +69,7 @@ class PostsAPIController extends AppBaseController
         $posts = $this->postsRepository
             ->with('user')
             ->orderBy('created_at', 'desc')
-            ->paginate(10);
+            ->paginate(5);
 
         return $this->sendResponse(
             $posts->toArray(),
@@ -119,9 +121,12 @@ class PostsAPIController extends AppBaseController
         $input = $request->validated();
         $input['user_id'] = $request->user()->id;
 
-        $data = $this->postsRepository->create($input);
+        $posts = $this->postsRepository->create($input);
 
-        return $this->sendResponse($data->toArray(), 'Post saved successfully');
+        return $this->sendResponse(
+            $posts->toArray(),
+            'Post saved successfully'
+        );
     }
 
     /**
