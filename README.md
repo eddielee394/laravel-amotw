@@ -5,7 +5,7 @@ A simple messaging system that allows users to... You guessed it, post messages 
 ![](docs/screenshots/amotw_login.jpg)
 
 #### Message Board
-![](docs/screenshots/messageboard_posts_v2.jpg)
+![](docs/screenshots/messageboard_react_add_post.gif)
 
 ### Core Functionality Overview:
 * [x]	Display list of existing messages (message content and entered name and email)
@@ -22,7 +22,8 @@ A simple messaging system that allows users to... You guessed it, post messages 
 * [x] Message delete (restricted to posts created by the currently logged in user)
 * [x] User email verification on registration
 * [x] Username & email unique validation on registration
-* [ ] Integrate ReactJS
+* [x] Integrate ReactJS
+* [ ] Integrate Redux
 * [x] User avatar support
 * [ ] Fancy looking design & styles
 * [ ] Nested post replies
