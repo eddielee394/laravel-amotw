@@ -20,12 +20,16 @@ class PostsList extends Component {
     }
 
     getPosts = () => {
+        //set state to loading to avoid multiple requests
+        this.setLoading();
+
         axios.get("/posts").then(response => {
             const r = response.data,
                 posts = r.data.data;
             if (posts.length) {
                 this.setState({
-                    posts: [...posts]
+                    posts: [...posts],
+                    loading: false
                 });
             }
         });
@@ -108,7 +112,11 @@ class PostsList extends Component {
                     </div>
                 </div>
                 <SidePanel title="Create Post">
-                    <PostCreate handleGetPosts={this.getPosts} />
+                    <PostCreate
+                        handleGetPosts={this.getPosts}
+                        loading={loading}
+                        setLoading={this.setLoading}
+                    />
                 </SidePanel>
             </React.Fragment>
         );

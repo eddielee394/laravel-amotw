@@ -21,6 +21,7 @@
 	text-decoration: none;
 	text-transform: uppercase;
   margin: 10px;
+	&:disabled {cursor:default}
   .brk-bordered-theme & {
     border-radius: var(--b-radius);
   }
@@ -942,6 +943,26 @@
 	}
 
 	&:hover {
+		color: $white !important;
+		background: transparent;
+		box-shadow: none;
+		span.btn-text {
+			color: $white !important;
+		}
+		span.btn-text > .before {
+			opacity: 1;
+			width: 116%;
+		}
+		span.btn-text:after {
+			opacity: 1;
+			width: 120%;
+		}
+		.left-border, .top-line {
+			opacity: 0;
+		}
+	}
+
+	&.loading {
 		color: $white !important;
 		background: transparent;
 		box-shadow: none;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { ScaleLoader } from "react-spinners";
 
 class PostCreate extends Component {
     state = {
@@ -13,7 +14,11 @@ class PostCreate extends Component {
      * @param callback function callback function to run after api request
      */
     storePost = (post, callback) => {
-        const { handleGetPosts } = this.props;
+        const { handleGetPosts, setLoading } = this.props;
+
+        //set loading to prevent double submission while waiting for the response
+        setLoading();
+
         //Store the post to the api
         axios
             .post("/posts", post)
@@ -46,6 +51,7 @@ class PostCreate extends Component {
         const { post } = this.state;
         //resets the input - todo: manage this with redux
         const resetInput = () => (this.input.value = "");
+
         //pass the post object & input reset function as callback to storePost() method
         this.storePost(post, resetInput);
     };
@@ -67,6 +73,13 @@ class PostCreate extends Component {
 
     render() {
         const { body } = this.state;
+        const { loading } = this.props;
+        const btnText = loading ? "SAVING" : "SUBMIT";
+        const btnClass = `btn btn-ice btn-xl btn-icon-abs border-radius-0 font__family-open-sans font__weight-bold btn-min-width-200 ${
+            loading ? "loading" : ""
+        }`;
+        const btnIsDisabled = loading ? "disabled" : "";
+
         return (
             <div className="brk-form brk-form-transparent px-3 py-5">
                 <div className="brk-form-wrap d-block">
@@ -84,7 +97,8 @@ class PostCreate extends Component {
                         <div className="submit-button-container text-center">
                             <button
                                 type="submit"
-                                className="btn btn-ice btn-xl btn-icon-abs border-radius-0 font__family-open-sans font__weight-bold btn-min-width-200"
+                                className={btnClass}
+                                disabled={btnIsDisabled}
                             >
                                 <span className="left-border" />
                                 <span className="top-line">
@@ -95,7 +109,12 @@ class PostCreate extends Component {
                                         className="fa fa-comments"
                                         aria-hidden="true"
                                     />
-                                    <span className="before" /> Submit
+                                    <ScaleLoader
+                                        color={"#00c6ff"}
+                                        loading={loading}
+                                        className="loader floating"
+                                    />
+                                    <span className="before" /> {btnText}
                                 </span>
                             </button>
                         </div>

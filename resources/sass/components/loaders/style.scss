@@ -1,0 +1,12 @@
+@import "../../assets/variables";
+@import "../../assets/mixins";
+
+.loader {
+  &.floating {
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    top: 10px;
+  }
+}
