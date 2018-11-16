@@ -7,31 +7,58 @@ class PostCreate extends Component {
         errors: []
     };
 
-    storePost = post => {
+    /**
+     * Store the post
+     * @param post
+     * @param callback function callback function to run after api request
+     */
+    storePost = (post, callback) => {
         const { handleGetPosts } = this.props;
-        console.log("storePost ", post);
-        axios.post("/posts", post).then(response => {});
+        //Store the post to the api
+        axios
+            .post("/posts", post)
+            .then(response => {
+                //update the post state & render the new post
+                this.setPost(post, handleGetPosts);
+                callback();
+                console.log("Post Added", response);
+            })
+            .catch(error => {
+                console.log("Error adding post", error);
+            });
     };
 
-    setPost = post => {
-        console.log("setPost: ", post);
-        this.setState({
-            post
-        });
+    /**
+     * Set the post state
+     * @param post object Object passed to the setState method
+     * @param callback function Callback function that runs after the state is set
+     */
+    setPost = (post, callback = null) => {
+        this.setState({ post }, callback);
     };
 
+    /**
+     * Store Post event handler
+     * @param e object The event object
+     */
     handleStorePost = e => {
         e.preventDefault();
         const { post } = this.state;
-        console.log("handleStorePost: ", post);
-        this.storePost(post);
+        //resets the input - todo: manage this with redux
+        const resetInput = () => (this.input.value = "");
+        //pass the post object & input reset function as callback to storePost() method
+        this.storePost(post, resetInput);
     };
 
+    /**
+     * Input change handler
+     * @param e object The event object
+     */
     handleInputChange = e => {
         const { name, value } = e.target;
-        //compare the current state with the input value
+        //update post state
         this.setState({
-            //use the spread operator to get all of the params in the user array from the state
+            //Update the post state's property
             post: {
                 [name]: value
             }
@@ -52,6 +79,7 @@ class PostCreate extends Component {
                             placeholder="Enter your message"
                             style={{ zIndex: 1, position: "relative" }}
                             onChange={this.handleInputChange}
+                            ref={input => (this.input = input)}
                         />
                         <div className="submit-button-container text-center">
                             <button
