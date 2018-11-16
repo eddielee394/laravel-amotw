@@ -22,6 +22,8 @@ class Post extends Model
         'body' => 'string'
     ];
 
+    protected $appends = ['created_at_relative'];
+
     /**
      * User Relationship
      * @uses \App\Models\User

@@ -14,11 +14,8 @@ use Illuminate\Http\Request;
 */
 
 //View Routes
-Route::group(['middleware' => ['auth', 'auth:api', 'verified']], function () {
+Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-
-    //Resource Routes
-    Route::resource('posts', 'PostAPIController');
 });

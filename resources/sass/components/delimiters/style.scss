@@ -1,0 +1,196 @@
+@import "../../assets/variables";
+@import "../../assets/mixins";
+
+.overlay__delimiter {
+	opacity: 0.9
+}
+
+[class*="delimiter"]{
+	figure{
+		box-shadow: none;
+	}
+}
+
+.delimiter {
+	&:before,
+	&:after {
+		content: '';
+		width: 100%;
+		height: 100%;
+	}
+
+	&__circle {
+		.services__wrapper-honeycomb .services__wrapper .icon__cover {
+			margin-bottom: 30px;
+		}
+
+		.services__wrapper-main {
+			z-index: 6;
+			position: relative;
+		}
+
+		.overlay__delimiter {
+			&-before {
+				left: 0;
+				top: -1px;
+
+				svg {
+					bottom: auto;
+				}
+			}
+		}
+	}
+
+	&__angle {
+		padding-bottom: 13.5vw;
+
+		@media #{$xs-max} {
+			padding-bottom: 60px;
+		}
+
+		.overlay__delimiter {
+			&-before {
+				left: 0;
+				bottom: -2px;
+			}
+		}
+
+		.icon__btn{
+			.icon {
+				width: 50%;
+			}
+
+			.livicon-evo-holder{ 
+				bottom: auto;
+				right: auto;
+				width: 70% !important;
+				top: 50%;
+				left: 50%;
+        transform: translate(-50%, -50%);
+			}
+		}
+	}
+
+	&__curve {
+		padding-bottom: 5vw;
+
+		@media (max-width: 992px) {
+			padding-bottom: 120px !important;
+		}
+
+		.highlight-underline {
+			margin-top: 20px;
+		}
+
+		.overlay__delimiter-before {
+			left: 0;
+			bottom: -2px;
+		}
+	}
+
+	&__trapezoid {
+		.overlay__delimiter {
+			&-before {
+				left: 0;
+				bottom: 0;
+				top: -1px;
+				width: auto;
+
+				svg {
+					bottom: -1px;
+					height: 100%;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	&__corner {
+		h1,h2 {
+			opacity: .1;
+			color: $white;
+
+			@media #{$xs-max} {
+				line-height: 25px;
+				font-size: 3.4rem;
+			}
+		}
+
+		.overlay__delimiter {
+			&-before {
+				left: 0;
+				bottom: -2px;
+			}
+		}
+
+		& * {
+			z-index: 5;
+			position: relative;
+		}
+	}
+
+	&__rounded {
+		.overlay__delimiter {
+			&-after {
+				z-index: -1;
+			}
+			&-before {
+				left: 0;
+				bottom: -1px;
+				z-index: -1;
+			}
+		}
+
+		.all-light {
+			@media #{$xs-max} {
+				margin-bottom: 30px;
+			}
+		}
+
+		p {
+			color: #bce1ff;
+		}
+		.border-btn {
+			border-color: var(--brk-base-2) !important;
+		}
+		.highlight-underline > .before {
+			background: var(--brk-base-2) !important;
+		}
+	}
+}
+
+.overlay__delimiter {
+	&-before {
+		display: block;
+		position: absolute;
+		left: 0;
+		right: 0;
+		background-repeat: no-repeat;
+		z-index: 5;
+
+		@media #{$xs-max} {
+			display: none;
+		}
+
+		svg {
+			position: relative;
+			bottom: -6px;
+		}
+	}
+
+	&-after {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 3;
+	}
+}
+
+.container-xl {
+	@media (min-width: 1700px) {
+		width: 1700px;
+		max-width: 1700px;
+	}
+}

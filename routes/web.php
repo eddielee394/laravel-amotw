@@ -11,17 +11,19 @@
 |
 */
 
-use App\Http\Controllers\PostController;
-
 Route::group(['middleware' => ['web']], function () {
     //Auth Routes
     Auth::routes(['verify' => true]);
-
-    Route::get('/', 'PostController@index')->name('dashboard.index');
 });
 
 //View Routes
 Route::group(['middleware' => ['auth', 'verified']], function () {
     //Resource Routes
-    Route::resource('posts', 'PostController');
+    Route::resource('posts', 'API\\PostsAPIController');
+
+    Route::get('/dashboard', 'DashboardController@index')->name(
+        'dashboard.index'
+    );
+
+    Route::view('/dashboard/{path?}', 'dashboard');
 });

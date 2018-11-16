@@ -1,15 +1,18 @@
 # Another Message on the Wall
-![](docs/screenshots/amitw_bg.jpg)   
-
 A simple messaging system that allows users to... You guessed it, post messages to a wall.
 
+#### Login
+![](docs/screenshots/amotw_login.jpg)
 
-### Required Functionality Overview:
+#### Message Board
+![](docs/screenshots/messageboard_react_add_post.gif)
+
+### Core Functionality Overview:
 * [x]	Display list of existing messages (message content and entered name and email)
 * [x]	List of messages sorted most recent first
 * [x]	Messages should be paginated, 10 per page
-* [ ]	~~Form to post message has fields for name, email, and message~~
-* [x]	Form validates name, email, and message as required fields, email is a valid email
+* [ ]	Form to post message has fields for ~~name, email, and~~ message
+* [x]	Registration Form validates name, email, and message as required fields, email is a valid email
 * [x]	Messages are stored in a database
 * [x]	No restrictions on use of back-end or front-end frameworks, as long as back-end is in PHP
 * [x]	Code pushed to Github, bitbucket, or other online code repository
@@ -19,17 +22,22 @@ A simple messaging system that allows users to... You guessed it, post messages 
 * [x] Message delete (restricted to posts created by the currently logged in user)
 * [x] User email verification on registration
 * [x] Username & email unique validation on registration
-* [ ] Integrate ReactJS
-* [ ] User avatar support
+* [x] Integrate ReactJS
+* [ ] Integrate Redux
+* [x] User avatar support
 * [ ] Fancy looking design & styles
 * [ ] Nested post replies
 * [ ] Favorited posts
 * [ ] Better SCSS support
-* [ ] REST API integration  
+* [ ] REST API integration
+* [x] Add infinite scroll to post pagination
+* [ ] Taggable support 
 
 ## Codebase Overview
 - Laravel 5.7.x
+- ReactJS
 - Bootstrap 4
+
 
 ## Usage 
 #### General Debugging

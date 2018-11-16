@@ -1,0 +1,89 @@
+/* ==========================================================================
+*
+* Utilities
+* Sizing presets
+*
+* - Fixed height in px
+* - Responsive height
+* - Max width
+* - Min width
+* - Fixed width in px
+* - Responsive width
+* - Max height
+* - Min height
+** ========================================================================== */
+
+/*
+ * Fixed height in px
+ */
+.h-auto { height: auto;}
+@for $i from 1 through 100 {
+  h-#{i}0 {
+    height: ($i * 10)+px;
+  }
+}
+
+/*
+ * responsive height
+ */
+.hsize-reset {height:0 !important;}
+@for $i from 1 through 10 {
+  .hsize-#{$i}0 {
+    height: ($i * 10%);
+  }
+}
+
+/*
+ * Min height
+ */
+@for $i from 1 through 20 {
+  .h-min-#{$i * 50} {
+    min-height: ($i * 50)+px !important;
+  }
+}
+
+/*
+ * Max height
+ */
+@for $i from 1 through 20 {
+  .h-max-#{$i * 50} {
+    max-height: ($i * 50)+px;
+  }
+}
+
+/*
+ * Responsive width
+ */
+@for $i from 1 through 10 {
+  .wsize-#{$i}0 {
+    width: ($i * 10%);
+  }
+}
+
+/*
+ * Fixed width in px
+ */
+.w-auto{ width: auto;}
+@for $i from 1 through 100 {
+  w-#{i}0 {
+    width: ($i * 10)+px;
+  }
+}
+
+/*
+ * Min width
+ */
+@for $i from 1 through 20 {
+  .w-min-#{$i * 50} {
+    min-width: ($i * 50)+px;
+  }
+}
+
+/*
+ * Max width
+ */
+@for $i from 1 through 20 {
+  .w-max-#{$i * 50} {
+    max-width: ($i * 50)+px;
+  }
+}

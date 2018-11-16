@@ -39,4 +39,22 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Post::class);
     }
+
+    /**
+     * Get's user avatar
+     * @return string
+     */
+    public function getAvatarAttribute()
+    {
+        return $this->getAvatar();
+    }
+
+    /**
+     * Loads random user avatar
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return 'http://i.pravatar.cc/40';
+    }
 }
