@@ -19,7 +19,7 @@ Route::group(['middleware' => ['web']], function () {
 //View Routes
 Route::group(['middleware' => ['auth', 'verified']], function () {
     //Resource Routes
-    Route::resource('posts', 'API\\PostsAPIController');
+    Route::resource('posts', 'API\\PostAPIController');
 
     Route::get('/dashboard', 'DashboardController@index')->name(
         'dashboard.index'
