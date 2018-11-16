@@ -12,6 +12,10 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
+    Route::get('/', function () {
+        return redirect(route('login'));
+    })->name('home.index');
+
     //Auth Routes
     Auth::routes(['verify' => true]);
 });
