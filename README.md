@@ -1,6 +1,9 @@
 # Another Message on the Wall
 A simple messaging system that allows users to... You guessed it, post messages to a wall.
 
+**Demo:** http://messageboard.lamplightsolutions.net
+
+
 #### Login
 ![](docs/screenshots/amotw_login.jpg)
 
