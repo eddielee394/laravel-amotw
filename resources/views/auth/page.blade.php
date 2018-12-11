@@ -24,8 +24,22 @@
 									@yield('auth_content')
 								</div>
 							</div>
-							<div class="row justify-content-center mt-3">
-							
+							<div class="row mt-30" data-brk-library="component__social_block">
+								<div class="col-lg-2 col-md-1"></div>
+								<div class="col-12 col-md-10">
+									<div class="social__icon-wrapper maxw-570 d-flex justify-content-between">
+										<div class="social__icon-circle"><a href="https://github.com/eddielee394" target="_blank"><i class="brk-icon icon-sm fab fa-github"><span class="before"></span><span class="after"></span></i></a>
+										</div>
+										<div class="social__icon-circle"><a href="https://stackoverflow.com/story/eddielee394" target="_blank"><i class="brk-icon icon-sm fab fa-stack-overflow"><span class="before"></span><span class="after"></span></i></a>
+										</div>
+										<div class="social__icon-circle"><a href="https://twitter.com/xerotrade" target="_blank"><i class="brk-icon icon-sm fab fa-twitter"><span class="before"></span><span class="after"></span></i></a>
+										</div>
+										<div class="social__icon-circle"><a href="https://www.linkedin.com/in/eddie-padin" target="_blank"><i class="brk-icon icon-sm fab fa-linkedin"><span class="before"></span><span class="after"></span></i></a>
+										</div>
+										<div class="social__icon-circle"><a href="https://www.lamplightsolutions.net/" target="_blank"><i class="brk-icon icon-sm fa fa-globe"><span class="before"></span><span class="after"></span></i></a>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
