@@ -20,7 +20,7 @@
 			</button>
 			<a href="{{ route('register') }}" class="btn-backgrounds btn-backgrounds_no-icon btn-backgrounds btn-backgrounds_white mt-30 btn-backgrounds_left-icon font__family-montserrat font__weight-bold text-uppercase font__size-13 z-index-2 text-center">Register</a>
 		</div>
-		<div class="pl-10">
+		<div class="pl-10 d-flex">
 			<label class="brk-form-checkbox">
 				<input id="checkbox-strict-1" name="remember" type="checkbox" checked="{{ old('remember') ? 'checked' : '' }}" class="rendered">
 				<span class="checkbox-custom">
@@ -30,4 +30,13 @@
 			<label class="brk-form-checkbox-label" for="checkbox-strict-1">{{ __('Remember Me') }}</label>
 		</div>
 	</form>
+	<div class="alert alert-info maxw-570 mt-3" role="alert">
+		<div class="d-block">
+			<span class="font__weight-bold">Username:</span> test@entertainermedia.net
+		</div>
+		<div class="d-block">
+			<span class="font__weight-bold">Password:</span> testtest
+		</div>
+	</div>
+
 @endsection

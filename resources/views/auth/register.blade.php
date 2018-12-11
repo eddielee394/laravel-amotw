@@ -63,8 +63,13 @@
             </button>
             <a href="{{ route('login') }}" class="btn-backgrounds btn-backgrounds_no-icon btn-backgrounds btn-backgrounds_white mt-30 btn-backgrounds_left-icon font__family-montserrat font__weight-bold text-uppercase font__size-13 z-index-2 text-center">Login</a>
         </div>
-        <div class="pl-10">
-            <input id="checkbox-strict-1" name="remember" type="checkbox" checked="{{ old('remember') ? 'checked' : '' }}" />
+        <div class="pl-10 d-flex">
+            <label class="brk-form-checkbox">
+                <input id="checkbox-strict-1" name="remember" type="checkbox" checked="{{ old('remember') ? 'checked' : '' }}" />
+                <span class="checkbox-custom">
+					<i class="fa fa-check" aria-hidden="true"></i>
+				</span>
+            </label>
             <label class="brk-form-checkbox-label" for="checkbox-strict-1">{{ __('Remember Me') }}</label>
         </div>
     </form>
