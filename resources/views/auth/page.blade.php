@@ -28,7 +28,7 @@
 								<div class="col-lg-2 col-md-1"></div>
 								<div class="col-12 col-md-10">
 									<div class="social__icon-wrapper maxw-570 d-flex justify-content-between">
-										<div class="social__icon-circle"><a href="https://github.com/eddielee394" target="_blank"><i class="brk-icon icon-sm fab fa-github"><span class="before"></span><span class="after"></span></i></a>
+										<div class="social__icon-circle"><a href="https://github.com/eddielee394/laravel-amotw" target="_blank"><i class="brk-icon icon-sm fab fa-github"><span class="before"></span><span class="after"></span></i></a>
 										</div>
 										<div class="social__icon-circle"><a href="https://stackoverflow.com/story/eddielee394" target="_blank"><i class="brk-icon icon-sm fab fa-stack-overflow"><span class="before"></span><span class="after"></span></i></a>
 										</div>
